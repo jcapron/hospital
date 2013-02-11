@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+<b><font size="6">Hospital Management</font></b></br>
+<%= link_to "View doctors", doctors_path %>
+<%= link_to "View secretaries", secretaries_path %>
+<%= link_to "View patients", patients_path %>
+<%= link_to "View appointments", appointments_path %>
+</head>
+<body style="background: #EEEEEE;">
+ 
+<%= yield %>
+ 
+</body>
+</html>

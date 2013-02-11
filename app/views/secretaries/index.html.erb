@@ -1,0 +1,31 @@
+<h1>Listing secretaries</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Doctor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @secretaries.each do |secretary| %>
+  <tr>
+    <td><%= link_to secretary.name, secretary %></td>
+    <td><%= secretary.phone %></td>
+	<td><% if secretary.doctor %>
+			<%= link_to Doctor.find(secretary.doctor_id).name, secretary.doctor %>
+		<% else %> 
+			<em>No doctor</em>
+		<% end %></td>
+    <td><%= link_to 'Show', secretary %></td>
+    <td><%= link_to 'Edit', edit_secretary_path(secretary) %></td>
+    <td><%= link_to 'Destroy', secretary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Secretary', new_secretary_path %>

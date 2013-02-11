@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @secretary.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @secretary.phone %>
+</p>
+
+<p>
+  <b>Doctor:</b>
+	<% if @secretary.doctor %>
+	<%= link_to Doctor.find(@secretary.doctor_id).name, @secretary.doctor %>
+	<% else %> 
+		<em>No doctor</em>
+	<% end %>
+  
+</p>
+
+
+<%= link_to 'Edit', edit_secretary_path(@secretary) %> |
+<%= link_to 'Back', secretaries_path %>

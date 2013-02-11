@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Doctor:</b>
+  <%= link_to Doctor.find(@appointment.doctor_id).name, @appointment.doctor %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%= link_to Patient.find(@appointment.patient_id).name, @appointment.patient %>
+</p>
+
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

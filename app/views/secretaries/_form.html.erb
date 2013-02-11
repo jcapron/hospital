@@ -1,0 +1,30 @@
+<%= form_for(@secretary) do |f| %>
+  <% if @secretary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@secretary.errors.count, "error") %> prohibited this secretary from being saved:</h2>
+
+      <ul>
+      <% @secretary.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor_id %><br />
+ <%= f.collection_select :doctor_id, Doctor.includes(:secretary).all.keep_if {|doctor| doctor.secretary.blank?}, :id, :name, {:include_blank => 'None'} %>
+  
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
